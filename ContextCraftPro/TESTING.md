@@ -378,7 +378,7 @@ python -m pytest tests/ -v
 This is expected if Foundry Local isn't running. The command should gracefully fall back to template mode. If not:
 ```bash
 # Check Foundry Local is accessible
-curl http://localhost:11434/v1/models
+curl http://127.0.0.1:PORT/v1/models
 # If not running, start it (requires separate Foundry Local installation)
 ```
 

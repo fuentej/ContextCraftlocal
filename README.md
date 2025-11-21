@@ -94,8 +94,45 @@ ccp generate-prp --feature my-feature
 
 ## Requirements
 
-- Python 3.8+
-- Foundry Local running locally
+- **Python 3.8+**
+- **Foundry Local** (Microsoft's local AI runtime)
+
+### Installing Foundry Local
+
+Foundry Local runs generative AI models on your device with no cloud calls or Azure account required.
+
+**Windows:**
+```bash
+winget install Microsoft.FoundryLocal
+```
+
+**macOS:**
+```bash
+brew tap microsoft/foundrylocal
+brew install foundrylocal
+```
+
+**Linux:** Download from [microsoft/Foundry-Local](https://github.com/microsoft/Foundry-Local)
+
+### Starting Foundry Local
+
+After installation, start a model:
+
+```bash
+foundry model run qwen2.5-0.5b
+```
+
+This downloads and starts the model. Note the output for the **API endpoint** (typically `http://127.0.0.1:PORT/v1/chat/completions` where PORT is dynamically assigned).
+
+Update `ContextCraftPro/config/contextcraft.yaml` with your endpoint:
+
+```yaml
+foundry_local:
+  endpoint: "http://127.0.0.1:PORT/v1/chat/completions"
+  model: "qwen2.5-0.5b"
+```
+
+See [Foundry Local docs](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-local/get-started) for more details.
 
 ## License
 

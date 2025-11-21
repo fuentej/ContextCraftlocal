@@ -115,7 +115,7 @@ python ccp.py init-project --dry-run --verbose
 ```yaml
 # config/contextcraft.yaml
 foundry_local:
-  endpoint: "http://localhost:11434/v1/chat/completions"
+  endpoint: "http://127.0.0.1:PORT/v1/chat/completions"
   model: "gpt-4o-mini"
   timeout: 30
   max_retries: 3
@@ -139,7 +139,7 @@ behavior:
 Variables set before `init-project` affect defaults:
 
 ```bash
-export CCP_FOUNDRY_LOCAL_ENDPOINT="http://localhost:8000/v1"
+export CCP_FOUNDRY_LOCAL_ENDPOINT="http://127.0.0.1:PORT/v1"
 export CCP_FOUNDRY_LOCAL_MODEL="llama2"
 python ccp.py init-project
 # Uses custom endpoint and model
@@ -605,7 +605,7 @@ python ccp.py generate-prp --feature x
 python ccp.py generate-prp --feature x
 
 # If persists, check Foundry Local:
-curl http://localhost:11434/api/tags
+curl http://127.0.0.1:PORT/api/tags
 ```
 
 ---
