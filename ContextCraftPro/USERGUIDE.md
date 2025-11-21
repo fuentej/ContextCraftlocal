@@ -443,23 +443,40 @@ rm context/prps/my-feature.md  # Delete PRP
 python ccp.py new-feature  # Start fresh
 ```
 
-### Workflow B: Using Different Models
+### Workflow B: Switching Between Models
 
-For expensive operations, use different models:
+Foundry Local runs one model at a time. To use different models:
 
 ```bash
-# Fast model for quick specs
-export CCP_FOUNDRY_LOCAL_MODEL="gpt-4o-mini"
+# Terminal 1: Start a model
+foundry model run qwen2.5-0.5b
+
+# Terminal 2: Set CCP to use this model
+export CCP_FOUNDRY_LOCAL_MODEL="qwen2.5-0.5b"
 python ccp.py new-feature
 
-# Powerful model for PRPs
+# When you want a different model:
+# Terminal 1: Stop current model (Ctrl+C)
+# Terminal 1: Start a different model
+foundry model run gpt-4-turbo
+
+# Terminal 2: Update CCP to match
 export CCP_FOUNDRY_LOCAL_MODEL="gpt-4-turbo"
 python ccp.py generate-prp --feature complex-feature
 
-# Back to fast for validation
-export CCP_FOUNDRY_LOCAL_MODEL="gpt-4o-mini"
+# Then switch back if needed
+# Terminal 1: (Ctrl+C) and restart
+foundry model run qwen2.5-0.5b
+
+# Terminal 2:
+export CCP_FOUNDRY_LOCAL_MODEL="qwen2.5-0.5b"
 python ccp.py validate --feature complex-feature
 ```
+
+**Note:**
+- Only one Foundry Local model runs at a time
+- When you switch the model in Terminal 1, update the `CCP_FOUNDRY_LOCAL_MODEL` in Terminal 2 to match
+- Alternatively, edit `config/contextcraft.yaml` and update the `model:` field
 
 ---
 
