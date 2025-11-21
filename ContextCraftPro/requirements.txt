@@ -1,0 +1,6 @@
+# ContextCraftPro Core Dependencies
+# Minimal dependencies for production use
+
+PyYAML>=6.0
+click>=8.0
+requests>=2.28
