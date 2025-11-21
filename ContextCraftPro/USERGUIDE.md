@@ -453,6 +453,11 @@ foundry model run qwen2.5-0.5b
 
 # Terminal 2: Set CCP to use this model
 export CCP_FOUNDRY_LOCAL_MODEL="qwen2.5-0.5b"
+
+# Verify the config is correct
+python ccp.py config
+
+# Now use CCP
 python ccp.py new-feature
 
 # When you want a different model:

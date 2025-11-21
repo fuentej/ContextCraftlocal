@@ -551,6 +551,21 @@ python ccp.py health --generate-report
 
 ## Troubleshooting
 
+### First: Check Your Configuration
+
+Before troubleshooting, verify your current configuration:
+
+```bash
+python ccp.py config
+```
+
+This shows:
+- Active Foundry Local endpoint and model
+- All configured file paths
+- Behavior settings
+
+If the model or endpoint is wrong, this is usually the problem.
+
 ### Problem: "Cannot connect to Foundry Local"
 
 **Error:** `Cannot connect to Foundry Local`
