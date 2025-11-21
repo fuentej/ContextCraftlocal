@@ -477,21 +477,6 @@ cp -r ~/project-a/ContextCraftPro/_context_exports/*/prps/* \
 # Now project B can use project A's PRPs as templates!
 ```
 
-### Workflow D: Offline Mode
-
-Skip LLM for offline work:
-
-```bash
-# Disable LLM refinement
-python ccp.py new-feature --no-llm  # Uses templates
-
-# Or globally in config
-nano config/contextcraft.yaml
-# Set: enable_refinement: false
-
-python ccp.py new-feature  # No LLM call
-```
-
 ---
 
 ## Examples with Real Output
