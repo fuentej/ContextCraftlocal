@@ -260,5 +260,33 @@ def export(ctx, target: str, yes: bool):
         sys.exit(1)
 
 
+@cli.command(name="config")
+@click.pass_context
+def show_config(ctx):
+    """
+    Display current ContextCraftPro configuration.
+
+    Shows the loaded configuration from contextcraft.yaml.
+    """
+    logger = ctx.obj["LOGGER"]
+    logger.operation_start("config", command="config")
+
+    try:
+        from core import ccp_orchestrator
+
+        ccp_orchestrator.show_config(
+            ccp_root=ctx.obj["CCP_ROOT"],
+            config_path=ctx.obj.get("CONFIG_PATH"),
+            logger=logger,
+        )
+
+        logger.operation_end("config", success=True)
+
+    except Exception as e:
+        logger.operation_end("config", success=False, error=str(e))
+        click.echo(f"Error: {e}", err=True)
+        sys.exit(1)
+
+
 if __name__ == "__main__":
     cli()

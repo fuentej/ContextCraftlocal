@@ -1684,3 +1684,47 @@ For more information, see: https://github.com/your-org/contextcraft-pro
     logger.info(
         "export completed", target=target, exported=exported_count if not dry_run else 0
     )
+
+
+def show_config(
+    ccp_root: Path,
+    config_path: Optional[str],
+    logger,
+):
+    """
+    Display current ContextCraftPro configuration.
+
+    Shows all loaded config values in a readable format.
+    """
+    logger.info("Starting config display")
+
+    click.echo("📋 ContextCraftPro Configuration")
+    click.echo("=" * 60)
+
+    # Load configuration
+    config = ccp_config.load_config(ccp_config.get_config_path(ccp_root, config_path))
+
+    click.echo("\n🔌 Foundry Local Settings:")
+    click.echo(f"  Endpoint: {config.foundry_local_endpoint}")
+    click.echo(f"  Model: {config.model}")
+    click.echo(f"  Timeout: {config.timeout}s")
+    click.echo(f"  Max Retries: {config.max_retries}")
+
+    click.echo("\n📁 Paths:")
+    click.echo(f"  Project Root: {config.project_root}")
+    click.echo(f"  Context Root: {config.context_root}")
+    click.echo(f"  Claude Rules: {config.claude_rules_path}")
+    click.echo(f"  Initial Spec: {config.initial_spec_path}")
+    click.echo(f"  Examples Dir: {config.examples_dir}")
+    click.echo(f"  Docs Dir: {config.docs_dir}")
+    click.echo(f"  PRPs Dir: {config.prps_dir}")
+    click.echo(f"  Validation Dir: {config.validation_dir}")
+
+    click.echo("\n⚙️  Behavior:")
+    click.echo(f"  Auto Open Browser: {config.auto_open_browser}")
+    click.echo(f"  Confirm Exports: {config.confirm_exports}")
+    click.echo(f"  Enable Refinement: {config.enable_refinement}")
+    click.echo(f"  Require Confirmation: {config.require_confirmation}")
+
+    click.echo("\n" + "=" * 60)
+    logger.info("config display completed")

@@ -14,6 +14,7 @@
 | `validate` | Record implementation results | 5 min | After each feature |
 | `health` | Check context status | 1 min | Weekly |
 | `export` | Share artifacts | 3 min | Before committing |
+| `config` | View current configuration | <1 min | When troubleshooting |
 
 ---
 
@@ -1207,6 +1208,77 @@ python ccp.py export --target docs
 python ccp.py export --target docs --yes
 # No confirmation prompts
 ```
+
+---
+
+## `config`
+
+**Purpose:** Display current ContextCraftPro configuration.
+
+### Synopsis
+
+```bash
+python ccp.py config
+```
+
+### Description
+
+Shows all active configuration values including:
+- Foundry Local endpoint and model
+- File paths (context directories, PRPs, validation, etc.)
+- Behavior settings (confirmation, refinement, etc.)
+
+Useful for troubleshooting when things don't work as expected.
+
+### Options
+
+None. Works with global `--config` to view alternate config files.
+
+```bash
+# View default config
+python ccp.py config
+
+# View alternate config
+python ccp.py config --config /path/to/config.yaml
+```
+
+### Output Example
+
+```
+📋 ContextCraftPro Configuration
+============================================================
+
+🔌 Foundry Local Settings:
+  Endpoint: http://127.0.0.1:11434/v1/chat/completions
+  Model: qwen2.5-0.5b
+  Timeout: 30s
+  Max Retries: 3
+
+📁 Paths:
+  Project Root: ..
+  Context Root: context
+  Claude Rules: context/claude.md
+  Initial Spec: context/INITIAL.md
+  Examples Dir: context/examples
+  Docs Dir: context/docs-context
+  PRPs Dir: context/prps
+  Validation Dir: context/validation
+
+⚙️  Behavior:
+  Auto Open Browser: false
+  Confirm Exports: true
+  Enable Refinement: true
+  Require Confirmation: true
+
+============================================================
+```
+
+### When to Use
+
+- **Troubleshooting** — Verify the model and endpoint are correct
+- **Switching models** — Confirm current model before running commands
+- **Configuration verification** — Check paths and behavior settings
+- **CI/CD debugging** — Verify environment-based configuration overrides
 
 ---
 
