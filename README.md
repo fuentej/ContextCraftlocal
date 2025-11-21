@@ -15,34 +15,35 @@ ContextCraftPro's **context generation** is **local-only** using Foundry Local (
 
 ## Installation
 
-### For Existing Projects
+### Step 1: Add ContextCraftPro to Your Project
 
-Add ContextCraftPro to your project:
-
-**Option 1: Clone and extract**
+**Option A: Clone and extract**
 ```bash
 cd /path/to/your/project
-
-# Clone repo into temp folder
 git clone https://github.com/fuentej/ContextCraftlocal.git temp-ccp
-
-# Copy just ContextCraftPro
 cp -r temp-ccp/ContextCraftPro .
-
-# Clean up
 rm -rf temp-ccp
-
-# Install and initialize
-cd ContextCraftPro
-pip install -r requirements.txt
-python ccp.py init-project
 ```
 
-**Option 2: Download manually**
+**Option B: Download manually**
 1. Go to https://github.com/fuentej/ContextCraftlocal/
 2. Download the repo as ZIP
 3. Extract `ContextCraftPro/` folder into your project root
-4. Run `pip install -r requirements.txt` and `python ccp.py init-project`
+
+### Step 2: Install Dependencies
+
+```bash
+cd ContextCraftPro
+pip install -r requirements.txt
+```
+
+### Step 3: Initialize
+
+```bash
+python ccp.py init-project
+```
+
+This profiles your repo, creates context files, and seeds your configuration.
 
 ### Reusing the Template
 
