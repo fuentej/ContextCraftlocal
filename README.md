@@ -21,6 +21,22 @@ pip install -r requirements.txt
 python ccp.py init-project
 ```
 
+### Optional: Create an alias
+
+Instead of typing `python ContextCraftPro/ccp.py` every time, create an alias:
+
+**Bash/Zsh** (add to `~/.bashrc` or `~/.zshrc`):
+```bash
+alias ccp="python /path/to/repo/ContextCraftPro/ccp.py"
+```
+
+Then just run:
+```bash
+ccp init-project
+ccp new-feature
+ccp generate-prp --feature my-feature
+```
+
 ## Documentation
 
 - **[ContextCraftPro README](ContextCraftPro/README.md)** — Full guide and usage
