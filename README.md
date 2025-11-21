@@ -11,7 +11,7 @@ ContextCraftPro helps you:
 - **Validate implementations** against requirements
 - **Maintain context health** and track completeness
 
-ContextCraftPro's **context generation** is **local-only** using Foundry Local (requirements, validation, health checks). **Implementation** happens in your chosen coding tool (Claude Code, VS Code, Cursor, etc.)—you decide whether to use cloud or local models. The entire tool lives in `ContextCraftPro/` and is **entirely disposable**—delete it anytime without affecting your project.
+ContextCraftPro's **context generation** is **local-only** using Foundry Local (requirements, validation, health checks). **Implementation** happens in your chosen coding tool (Claude Code, VS Code, Cursor, etc.)—you decide whether to use cloud or local models. The entire tool is **entirely disposable**—delete it anytime without affecting your project.
 
 ## Installation
 

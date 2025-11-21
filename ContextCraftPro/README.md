@@ -9,7 +9,7 @@
 - **Validate implementations** against requirements
 - **Maintain context health** and track completeness
 
-This folder is **git-ignored** and **entirely disposable**—delete it anytime without affecting your project.
+This folder is **entirely disposable**—delete it anytime without affecting your project.
 
 ### Key Principles
 
