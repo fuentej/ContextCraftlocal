@@ -13,21 +13,56 @@ ContextCraftPro helps you:
 
 All operations are **local-only** using Foundry Local. The entire tool lives in `ContextCraftPro/` and is **entirely disposable**—delete it anytime without affecting your project.
 
-## Quick Start
+## Installation
 
+### For Existing Projects
+
+Add ContextCraftPro to your project:
+
+**Option 1: Clone and extract**
 ```bash
+cd /path/to/your/project
+
+# Clone repo into temp folder
+git clone https://github.com/fuentej/ContextCraftlocal.git temp-ccp
+
+# Copy just ContextCraftPro
+cp -r temp-ccp/ContextCraftPro .
+
+# Clean up
+rm -rf temp-ccp
+
+# Install and initialize
 cd ContextCraftPro
 pip install -r requirements.txt
 python ccp.py init-project
 ```
 
-### Optional: Create an alias
+**Option 2: Download manually**
+1. Go to https://github.com/fuentej/ContextCraftlocal/
+2. Download the repo as ZIP
+3. Extract `ContextCraftPro/` folder into your project root
+4. Run `pip install -r requirements.txt` and `python ccp.py init-project`
+
+### Reusing the Template
+
+Save `ContextCraftPro/` as a template for future projects:
+
+```bash
+# After using CCP, save the initialized folder
+cp -r /path/to/project/ContextCraftPro ~/templates/contextcraft-pro-template
+
+# Next project: just copy the template
+cp -r ~/templates/contextcraft-pro-template /path/to/new/project/ContextCraftPro
+```
+
+### Optional: Create an Alias
 
 Instead of typing `python ContextCraftPro/ccp.py` every time, create an alias:
 
 **Bash/Zsh** (add to `~/.bashrc` or `~/.zshrc`):
 ```bash
-alias ccp="python /path/to/repo/ContextCraftPro/ccp.py"
+alias ccp="python /path/to/your/project/ContextCraftPro/ccp.py"
 ```
 
 Then just run:
