@@ -21,7 +21,7 @@
 
 **Prerequisites:**
 - Python 3.8+ installed
-- Foundry Local running (`foundry-local serve` in another terminal)
+- Foundry Local installed and running (see [README](../README.md#requirements))
 - Your project repo with at least one git commit
 
 **Step-by-step:**
@@ -30,21 +30,16 @@
 # 1. Navigate to your project root (where .git/ lives)
 cd ~/my-project
 
-# 2. Create ContextCraftPro folder
-mkdir -p ContextCraftPro
+# 2. Clone ContextCraftPro into your project
+git clone https://github.com/fuentej/ContextCraftlocal.git temp-ccp
+cp -r temp-ccp/ContextCraftPro .
+rm -rf temp-ccp
+
+# 3. Enter the folder and install
 cd ContextCraftPro
-
-# 3. Copy the CCP tool (or clone it)
-# Assuming you have the CCP files ready
-cp ../ccp.py .
-cp -r ../core ./core
-cp -r ../templates ./templates
-# ... etc
-
-# 4. Install dependencies
 pip install -r requirements.txt
 
-# 5. Initialize the project
+# 4. Initialize the project
 python ccp.py init-project
 
 # You'll see:
@@ -56,7 +51,7 @@ python ccp.py init-project
 #
 # Answer 'y' to add to .gitignore
 
-# 6. Verify setup
+# 5. Verify setup
 python ccp.py health
 
 # Expected output:
