@@ -8,6 +8,7 @@ rich==13.7.0
 
 # File and path handling
 pathlib2==2.3.7.post1; python_version < '3.4'
+PyYAML==6.0.1
 
 # Development and Testing
 pytest==7.4.3
