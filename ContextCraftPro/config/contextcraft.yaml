@@ -1,0 +1,18 @@
+foundry_local:
+  endpoint: http://localhost:11434/v1/chat/completions
+  model: gpt-4o-mini
+  timeout: 30
+  max_retries: 3
+paths:
+  project_root: ..
+  context_root: context
+  claude_rules: context/claude.md
+  initial_spec: context/INITIAL.md
+  examples_dir: context/examples
+  docs_dir: context/docs-context
+  prps_dir: context/prps
+  validation_dir: context/validation
+behavior:
+  auto_open_browser: false
+  confirm_exports: true
+  max_repo_scan_depth: 5
