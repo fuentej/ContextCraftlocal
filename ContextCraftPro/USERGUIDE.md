@@ -461,22 +461,6 @@ export CCP_FOUNDRY_LOCAL_MODEL="gpt-4o-mini"
 python ccp.py validate --feature complex-feature
 ```
 
-### Workflow C: Sharing Context Between Repos
-
-Export from one project, import to another:
-
-```bash
-# Project A: Export everything
-cd ~/project-a/ContextCraftPro
-python ccp.py export --target all
-
-# Project B: Copy exported files
-cp -r ~/project-a/ContextCraftPro/_context_exports/*/prps/* \
-   ~/project-b/ContextCraftPro/context/prps/
-
-# Now project B can use project A's PRPs as templates!
-```
-
 ---
 
 ## Examples with Real Output
