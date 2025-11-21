@@ -15,6 +15,34 @@
 
 ---
 
+## How It Works: The Two-Layer Architecture
+
+CCP uses a **two-layer architecture** that separates context generation from implementation:
+
+### Layer 1: Context Generation (Local-Only)
+✓ **Happens on your machine via ContextCraftPro:**
+- Define features with structured specs
+- Generate PRPs (Product Requirements Prompts) using Foundry Local (your machine, not cloud)
+- Validate implementations against requirements
+- Track context health
+
+**Result:** A markdown file (`context/prps/*.md`) with detailed implementation requirements.
+
+### Layer 2: Implementation (Your Choice)
+✓ **Happens in your coding tool:**
+You choose how to implement. Options include:
+- **Claude Code** (cloud-based Claude)
+- **Cursor** (IDE with AI, local or cloud model switching)
+- **VS Code + Claude Extension** (local IDE, cloud Claude)
+- **ChatGPT/Gemini/etc.** (your preferred chat interface)
+- **Any other coding assistant**
+
+You feed the PRP (a Markdown file) to your chosen tool. That tool does the coding—using whatever LLM and setup you configured for it.
+
+**Key insight:** CCP is local-only for *requirements generation*. Implementation is completely tool-agnostic—use whatever coding setup works best for you.
+
+---
+
 ## Getting Started
 
 ### Initial Setup (5 minutes)
@@ -230,35 +258,52 @@ Continue? [y/n]
 ✓ PRP saved to context/prps/user-authentication.md
 ```
 
-### Phase 3: Use PRP with Claude Code (10 min)
+### Phase 3: Implement Using Your Coding Assistant (10 min)
 
-Copy the generated PRP and use it with Claude Code:
+CCP generates the requirements; now use your chosen coding tool to implement. The PRP is tool-agnostic.
+
+#### Option A: Claude Code (Cloud-based)
 
 ```bash
-# Display the PRP so you can copy it
-cat context/prps/user-authentication.md
-```
-
-In Claude Code (web or CLI):
-```bash
-# Or use CLI
+# CLI approach
 claude-code --instructions "$(cat context/prps/user-authentication.md)"
+
+# Or copy the PRP manually
+cat context/prps/user-authentication.md
+# Then paste into claude.ai/code web interface
 ```
 
-Paste the PRP and ask Claude to implement. Example prompt:
-```
-Here's a PRP for implementing user authentication. Please implement all the steps,
-follow the checklist, and ensure all tests pass.
+#### Option B: Cursor (IDE with AI)
 
-[paste PRP content]
+1. Open your project in Cursor
+2. Right-click `context/prps/user-authentication.md` → Open
+3. Select all and use Cursor's AI chat to implement
+4. Cursor executes changes directly in your editor
+
+#### Option C: VS Code + Claude Extension
+
+1. Open `context/prps/user-authentication.md` in VS Code
+2. In the Claude panel, paste the PRP content
+3. Ask: "Implement this PRP"
+4. Claude suggests changes; you apply them
+
+#### Option D: Any Other Tool (ChatGPT, Gemini, etc.)
+
+```bash
+# Copy the PRP
+cat context/prps/user-authentication.md
+
+# Paste into your tool's chat interface and ask:
+# "Please implement this product requirements prompt. Follow each step
+#  in order and verify against the checklist."
 ```
 
-Claude will:
-- Create the User model
-- Add authentication middleware
-- Create login/logout endpoints
-- Write tests
-- All based on your specific PRP
+**All approaches will result in:**
+- User model with email and password hash
+- Authentication middleware validating JWT
+- Login/logout endpoints
+- Tests covering all scenarios
+- Following your project's code style (from `context/claude.md`)
 
 ### Phase 4: Validate the Implementation (5 min)
 

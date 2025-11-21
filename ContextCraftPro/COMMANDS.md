@@ -569,22 +569,38 @@ python ccp.py generate-prp --feature x --max-tokens 6000 --temperature 0.7
 
 ### How to Use the Generated PRP
 
-1. **Copy the PRP:**
-   ```bash
-   cat context/prps/feature-slug.md
-   ```
+The PRP is a tool-agnostic Markdown file. Use it with any coding assistant:
 
-2. **Use with Claude Code:**
-   ```bash
-   # Web interface: copy/paste the content
-   # CLI: use as instruction file
-   claude-code --instructions context/prps/feature-slug.md
-   ```
+**Option 1: Claude Code (Cloud-based)**
+```bash
+# Web: claude.ai/code → paste PRP content
+# CLI: use as instruction
+claude-code --instructions context/prps/feature-slug.md
+```
 
-3. **Or manually with your favorite AI:**
-   - Open the .md file
-   - Paste into ChatGPT, Claude, etc.
-   - Ask it to implement the requirements
+**Option 2: Cursor (IDE with AI)**
+```bash
+# Open PRP in Cursor, select all, use Cursor's AI chat
+cursor context/prps/feature-slug.md
+```
+
+**Option 3: VS Code + Claude Extension**
+```bash
+# Open PRP in VS Code, paste into Claude panel
+code context/prps/feature-slug.md
+```
+
+**Option 4: Any Tool (ChatGPT, Gemini, etc.)**
+```bash
+# Copy and paste into your preferred interface
+cat context/prps/feature-slug.md
+# Then paste into ChatGPT, Gemini, or any coding assistant
+```
+
+**All approaches:**
+- Use the PRP as your implementation guide
+- The tool follows steps, implements code, and runs tests
+- Verify results match the checklist in the PRP
 
 ### Troubleshooting
 

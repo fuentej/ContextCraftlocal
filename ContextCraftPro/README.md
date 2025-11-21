@@ -13,10 +13,11 @@ This folder is **git-ignored** and **entirely disposable**—delete it anytime w
 
 ### Key Principles
 
-- 🏠 **Local-only**: All operations use Foundry Local (no cloud LLM calls)
+- 🏠 **Context Generation is Local-only**: CCP's own operations (PRP generation, validation, health checks) run entirely on your machine via Foundry Local—no cloud calls
+- 🔧 **Implementation is Tool-Agnostic**: You feed PRPs to your chosen coding assistant (Claude Code, VS Code, Cursor, etc.). Implementation happens wherever you're coding
 - 📦 **Self-contained**: Everything lives inside `ContextCraftPro/`
 - 🗑️ **Disposable**: Delete the folder and your project is unchanged
-- 🤖 **Agentic**: Guides you through structured workflows with optional LLM enhancement
+- 🤖 **Agentic**: Guides you through structured workflows with local LLM enhancement
 - 📝 **Transparent**: All artifacts are human-readable text (Markdown, YAML, JSON)
 
 ---
@@ -104,14 +105,32 @@ Result: `context/prps/my-feature.md` — use this file with Claude Code or other
 
 ### 3. Implement the Feature
 
-Use the PRP with your coding assistant:
+CCP generates requirements; **you choose your coding tool**. Here are common approaches:
 
+#### With Claude Code (cloud-based)
 ```bash
-# Example with Claude Code CLI
-claude-code --instructions "context/prps/my-feature.md"
+# CLI: Pass PRP as instructions
+claude-code --instructions "$(cat context/prps/my-feature.md)"
+
+# Or web interface: claude.ai/code → paste PRP content
 ```
 
-Or copy/paste the PRP into Claude Code web interface.
+#### With VS Code + Claude Extension
+1. Open the PRP file: `cat context/prps/my-feature.md`
+2. In VS Code's Claude panel, paste the content
+3. Claude processes it in your editor
+
+#### With Cursor (local-based)
+1. Open `context/prps/my-feature.md` in Cursor
+2. Select all and use Cursor's AI to implement
+3. Cursor can use local or cloud models depending on your config
+
+#### With Other Tools (ChatGPT, Gemini, etc.)
+- Copy `context/prps/my-feature.md` content
+- Paste into your tool's chat interface
+- Ask it to implement following the PRP steps
+
+**Note:** CCP's PRP generation is local-only via Foundry Local. Implementation tools may use cloud or local LLMs depending on your setup.
 
 ### 4. Validate Against Requirements
 

@@ -11,7 +11,7 @@ ContextCraftPro helps you:
 - **Validate implementations** against requirements
 - **Maintain context health** and track completeness
 
-All operations are **local-only** using Foundry Local. The entire tool lives in `ContextCraftPro/` and is **entirely disposable**—delete it anytime without affecting your project.
+ContextCraftPro's **context generation** is **local-only** using Foundry Local (requirements, validation, health checks). **Implementation** happens in your chosen coding tool (Claude Code, VS Code, Cursor, etc.)—you decide whether to use cloud or local models. The entire tool lives in `ContextCraftPro/` and is **entirely disposable**—delete it anytime without affecting your project.
 
 ## Installation
 
@@ -82,7 +82,9 @@ ccp generate-prp --feature my-feature
 
 ## Key Features
 
-🏠 **Local-only** — All operations use Foundry Local (no cloud LLM calls)
+🏠 **Context Generation is Local-only** — PRP generation, validation, and health checks run entirely on your machine via Foundry Local
+
+🔧 **Implementation is Tool-Agnostic** — Use any coding assistant (Claude Code, Cursor, VS Code, etc.) with cloud or local models
 
 📦 **Self-contained** — Everything lives inside `ContextCraftPro/`
 
