@@ -42,43 +42,100 @@ ContextCraft automates the tedious process of project scaffolding. Instead of ma
 
 ## Installation
 
-### Option 1: Direct Download
+### Option 1: Install from PyPI (Recommended)
+```bash
+# Install the package
+pip install contextcraft
+
+# Run from anywhere
+contextcraft create
+```
+
+### Option 2: Install from Source
 ```bash
 # Clone the repository
 git clone https://github.com/fuentej/ContextCraftlocal.git
 cd ContextCraftlocal
 
-# Run directly
-python newprojectv3.py
+# Install in development mode
+pip install -e .
+
+# Run the CLI
+contextcraft create
 ```
 
-### Option 2: Global Installation (Coming Soon)
+### Option 3: Development Setup
 ```bash
-pip install contextcraft
-contextcraft
+# Clone and setup for development
+git clone https://github.com/fuentej/ContextCraftlocal.git
+cd ContextCraftlocal
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install with dev dependencies
+pip install -e ".[dev]"
+
+# Run tests
+pytest
+
+# Run the CLI
+python contextcraft.py create
 ```
 
-### Option 3: Docker (Coming Soon)
-```bash
-docker run -it contextcraft:latest
-```
+### Requirements
+
+- Python 3.8 or higher
+- pip (Python package installer)
 
 ## Quick Start
 
-```bash
-# Start the generator
-python newprojectv3.py
+### Interactive Mode
 
-# Follow the interactive prompts:
+```bash
+# Start the interactive generator
+contextcraft create
+
+# Follow the prompts:
 # 1. Enter your project name
 # 2. Select project type (1-6)
 # 3. Choose tech stack (1-10)
-# 4. Done! Your project is ready
+# 4. Confirm and generate
 
 # Navigate to your new project
 cd your_project_name
 
-# Start coding!
+# Follow the next steps instructions
+```
+
+### Non-Interactive Mode (CI/CD Friendly)
+
+```bash
+# Create project with flags
+contextcraft create \
+  --name my-awesome-app \
+  --type web_app \
+  --stack python_fastapi \
+  --yes
+
+# Project is created without prompts
+```
+
+### CLI Commands
+
+```bash
+# List all available tech stacks
+contextcraft list-stacks
+
+# List all project types
+contextcraft list-types
+
+# Show version
+contextcraft version
+
+# Get help
+contextcraft --help
 ```
 
 ## Supported Tech Stacks
